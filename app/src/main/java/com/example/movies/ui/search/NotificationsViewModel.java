@@ -1,4 +1,4 @@
-package com.example.movies.ui.notifications;
+package com.example.movies.ui.search;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

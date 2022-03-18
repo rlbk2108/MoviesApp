@@ -1,4 +1,4 @@
-package com.example.movies.ui.notifications;
+package com.example.movies.ui.search;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
