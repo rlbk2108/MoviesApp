@@ -7,30 +7,41 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.movies.databinding.FragmentHomeBinding;
+import com.example.movies.R;
+import com.example.movies.ui.home.HomeFragment;
 
 
 public class HomeFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
+        private HomeViewModel mViewModel;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        public static HomeFragment newInstance() {
+            return new HomeFragment();
+        }
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        private View binding;
 
-        return root;
-    }
+        @Override
+        public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                                 @Nullable Bundle savedInstanceState) {
+            return inflater.inflate(R.layout.fragment_home, container, false);
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
+        }
+
+        @Override
+        public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+            super.onActivityCreated(savedInstanceState);
+            mViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+            // TODO: Use the ViewModel
+        }
+
+        @Override
+        public void onDestroyView() {
+            super.onDestroyView();
+            binding = null;
+        }
 }

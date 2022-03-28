@@ -1,7 +1,12 @@
 package com.example.movies;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 
+import com.example.movies.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +17,6 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.movies.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,13 +46,28 @@ public class MainActivity extends AppCompatActivity {
 
         List<Item> items = new ArrayList<Item>();
         items.add(new Item("Звездные воины", "Фэнтези", "7.1", R.drawable.starwars));
-        items.add(new Item("Гарри Поттер", "Приключения", "9.0", R.drawable.starwars));
-        items.add(new Item("Интерстеллар", "Драма", "10.0", R.drawable.starwars));
-        items.add(new Item("Зеленая книга", "Драма", "8.7", R.drawable.starwars));
-        items.add(new Item("Остров проклятых", "Триллер, Детектив", "8.1", R.drawable.starwars));
+        items.add(new Item("Гарри Поттер", "Приключения", "9.0", R.drawable.harry_potter));
+        items.add(new Item("Интерстеллар", "Драма", "10.0", R.drawable.interstellar_2014));
+        items.add(new Item("Зеленая книга", "Драма", "8.7", R.drawable.greenbook));
+        items.add(new Item("Джон Уик", "Боевик", "8.1", R.drawable.john_wick));
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true));
+        items.add(new Item("Семь жизней", "Драма", "7.1", R.drawable.seven_pounds));
+        items.add(new Item("Легенда", "Боевик", "9.0", R.drawable.legend));
+        items.add(new Item("Триггер", "Драма", "10.0", R.drawable.trigger));
+        items.add(new Item("Властелин колец", "Приключения", "8.7", R.drawable.kingofrings));
+        items.add(new Item("25-21", "Дорама", "8.1", R.drawable.tt));
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(new MyAdapter(getApplicationContext(), items));
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
+    public void onClickWeb(View view){
+        WebView browser = new WebView(this);
+        setContentView(browser);
+        browser.loadUrl("https://github.com/rlbk2108/MoviesApp");
+
+        WebSettings webSettings = browser.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+    }
 }
